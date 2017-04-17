@@ -9,13 +9,14 @@
 #import "ViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-//#import "TableViewController.h"
 #import "AFNetworking.h"
-
 #import "Product.h"
+#import "CustomCell.h"
 
-@interface ViewController ()
-@property(strong) NSDictionary *weather;
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
 @end
 
 @implementation ViewController
@@ -35,7 +36,7 @@
     // Optional: Place the button in the center of your view.
     loginButton.center = origin;
     [self.view addSubview:loginButton];
-    
+    self.productArray = [[NSMutableArray alloc] init];
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         NSLog(@"user logat");
@@ -52,7 +53,7 @@
 -(void)getProducts
 {
     // 1
-    NSString *string = @"https://api.myjson.com/bins/hk39r";
+    NSString *string = @"https://api.myjson.com/bins/13jnev";
     NSURL *url = [NSURL URLWithString:string];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -63,19 +64,16 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // 3
-        //self.weather = (NSDictionary *)responseObject;
-        //self.title = @"JSON Retrieved";
         
         NSArray * productsArray = (NSArray*)responseObject;
         
-        //[self.tableView reloadData];
         
-        self.productArray = [[NSMutableArray alloc] init];
+        
         for (int i = 0; i < productsArray.count; i++) {
-            Product * product =[[Product alloc] initWithProps:productsArray[0]];
+            Product * product =[[Product alloc] initWithProps:productsArray[i]];
             [self.productArray addObject: product];
         }
-        //we save the data
+        [self.table reloadData];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -93,5 +91,56 @@
     [operation start];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.productArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    static NSString * cellId = @"cell";
+    CustomCell * customCell = [tableView dequeueReusableCellWithIdentifier: cellId];
+    
+    Product * currentProduct = [self.productArray objectAtIndex:indexPath.row];
+    customCell.customCode.text = currentProduct.productCode;
+    customCell.customName.text = currentProduct.productName;
+    customCell.customPrice.text = [NSString stringWithFormat:@"%@%@",[NSString stringWithFormat:@"%.02f", currentProduct.price],@" $"];
+    
+    
+    NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
+    NSData *data = [NSData dataWithContentsOfURL:imgURL];
+    customCell.customPicture.image = [UIImage imageWithData: data];
+    
+    return customCell;
+    
+}
+
 
 @end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
