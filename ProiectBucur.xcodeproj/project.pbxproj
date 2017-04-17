@@ -13,6 +13,10 @@
 		1E66B20A1EA4C01B004E693F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E66B2081EA4C01B004E693F /* Main.storyboard */; };
 		1E66B20C1EA4C01B004E693F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E66B20B1EA4C01B004E693F /* Assets.xcassets */; };
 		1E66B20F1EA4C01B004E693F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E66B20D1EA4C01B004E693F /* LaunchScreen.storyboard */; };
+		1E66B2251EA4CE77004E693F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E66B2211EA4CE77004E693F /* Bolts.framework */; };
+		1E66B2261EA4CE77004E693F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E66B2221EA4CE77004E693F /* FBSDKCoreKit.framework */; };
+		1E66B2271EA4CE77004E693F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E66B2231EA4CE77004E693F /* FBSDKLoginKit.framework */; };
+		1E66B2281EA4CE77004E693F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E66B2241EA4CE77004E693F /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		1E66B20B1EA4C01B004E693F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E66B20E1EA4C01B004E693F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E66B2101EA4C01B004E693F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E66B2211EA4CE77004E693F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		1E66B2221EA4CE77004E693F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		1E66B2231EA4CE77004E693F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		1E66B2241EA4CE77004E693F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +41,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E66B2281EA4CE77004E693F /* FBSDKShareKit.framework in Frameworks */,
+				1E66B2251EA4CE77004E693F /* Bolts.framework in Frameworks */,
+				1E66B2261EA4CE77004E693F /* FBSDKCoreKit.framework in Frameworks */,
+				1E66B2271EA4CE77004E693F /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +54,7 @@
 		1E66B1F31EA4C01B004E693F = {
 			isa = PBXGroup;
 			children = (
+				1E66B2181EA4C739004E693F /* Frameworks */,
 				1E66B1FE1EA4C01B004E693F /* ProiectBucur */,
 				1E66B1FD1EA4C01B004E693F /* Products */,
 			);
@@ -77,6 +90,17 @@
 				1E66B2001EA4C01B004E693F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1E66B2181EA4C739004E693F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E66B2211EA4CE77004E693F /* Bolts.framework */,
+				1E66B2221EA4CE77004E693F /* FBSDKCoreKit.framework */,
+				1E66B2231EA4CE77004E693F /* FBSDKLoginKit.framework */,
+				1E66B2241EA4CE77004E693F /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +296,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/radubucur/Downloads/FacebookSDKs-iOS-4";
 				INFOPLIST_FILE = ProiectBucur/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rbu.ProiectBucur;
@@ -283,6 +312,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ProiectBucur/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rbu.ProiectBucur;

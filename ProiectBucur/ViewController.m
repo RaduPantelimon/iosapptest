@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface ViewController ()
 
@@ -14,9 +16,26 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    //initializing login button
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    
+    // setting the facebook button position
+    float screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    float screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    CGPoint origin = CGPointMake(screenWidth/2, screenHeight - 100);
+    
+    // Optional: Place the button in the center of your view.
+    loginButton.center = origin;
+    [self.view addSubview:loginButton];
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        NSLog(@"user logat");
+    }
 }
 
 
