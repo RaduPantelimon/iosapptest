@@ -13,6 +13,7 @@
 -(void)getProducts;
 
 @property NSMutableArray *productArray;
+@property int ItemSelected;
 
 @end
 

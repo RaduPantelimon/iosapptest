@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E1BFE881EA4FFF600AE05DA /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE871EA4FFF600AE05DA /* Product.m */; };
 		1E1BFE901EA5349300AE05DA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE8F1EA5349300AE05DA /* CustomCell.m */; };
+		1E1BFE931EA5462800AE05DA /* SecondaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE921EA5462800AE05DA /* SecondaryViewController.m */; };
 		1E66B2011EA4C01B004E693F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2001EA4C01B004E693F /* main.m */; };
 		1E66B2041EA4C01B004E693F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2031EA4C01B004E693F /* AppDelegate.m */; };
 		1E66B2071EA4C01B004E693F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2061EA4C01B004E693F /* ViewController.m */; };
@@ -27,6 +28,8 @@
 		1E1BFE871EA4FFF600AE05DA /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		1E1BFE8E1EA5349300AE05DA /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		1E1BFE8F1EA5349300AE05DA /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		1E1BFE911EA5462800AE05DA /* SecondaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryViewController.h; sourceTree = "<group>"; };
+		1E1BFE921EA5462800AE05DA /* SecondaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryViewController.m; sourceTree = "<group>"; };
 		1E66B1FC1EA4C01B004E693F /* ProiectBucur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProiectBucur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E66B2001EA4C01B004E693F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E66B2021EA4C01B004E693F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 		1E66B1F31EA4C01B004E693F = {
 			isa = PBXGroup;
 			children = (
+				1E1BFE911EA5462800AE05DA /* SecondaryViewController.h */,
+				1E1BFE921EA5462800AE05DA /* SecondaryViewController.m */,
 				1E1BFE8E1EA5349300AE05DA /* CustomCell.h */,
 				1E1BFE8F1EA5349300AE05DA /* CustomCell.m */,
 				1E1BFE861EA4FFF600AE05DA /* Product.h */,
@@ -252,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E66B2071EA4C01B004E693F /* ViewController.m in Sources */,
+				1E1BFE931EA5462800AE05DA /* SecondaryViewController.m in Sources */,
 				1E1BFE881EA4FFF600AE05DA /* Product.m in Sources */,
 				1E1BFE901EA5349300AE05DA /* CustomCell.m in Sources */,
 				1E66B2041EA4C01B004E693F /* AppDelegate.m in Sources */,

@@ -12,10 +12,12 @@
 #import "AFNetworking.h"
 #import "Product.h"
 #import "CustomCell.h"
+#import "SecondaryViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+
 
 @end
 
@@ -107,13 +109,46 @@
     customCell.customName.text = currentProduct.productName;
     customCell.customPrice.text = [NSString stringWithFormat:@"%@%@",[NSString stringWithFormat:@"%.02f", currentProduct.price],@" $"];
     
-    
+    //adding pictures to the cell
     NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
     NSData *data = [NSData dataWithContentsOfURL:imgURL];
     customCell.customPicture.image = [UIImage imageWithData: data];
     
+    customCell.customPicture.layer.cornerRadius = customCell.customPicture.frame.size.width/2;
+    customCell.customPicture.layer.borderWidth = 1.0f;
+    customCell.customPicture.layer.borderColor = [UIColor blueColor].CGColor;
+    customCell.customPicture.clipsToBounds = YES;
+    
+    customCell.customDetailsButton.tag = indexPath.row;
+    
+    [customCell.customDetailsButton addTarget:self action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];
+    /*[customCell.customDetailsButton addTarget:currentProduct action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];*/
     return customCell;
     
+}
+
+
+- (IBAction)GoToSecondary:(id)sender {
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView: self.table];
+    NSIndexPath * indexpath = [self.table indexPathForRowAtPoint:buttonPosition];
+
+    
+    self.ItemSelected = (int) indexpath.row;
+    [self performSegueWithIdentifier:@"details" sender:@"detailsButton"];
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    
+    SecondaryViewController *destination=segue.destinationViewController;
+    destination.selectedProduct = [self.productArray objectAtIndex:self.ItemSelected];
 }
 
 
