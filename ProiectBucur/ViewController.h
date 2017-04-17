@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+-(void)getProducts;
+
+@property NSMutableArray *productArray;
 
 @end
 
