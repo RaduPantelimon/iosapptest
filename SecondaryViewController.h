@@ -26,4 +26,13 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ProductImage;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *productDescription;
+
+@property (weak, nonatomic) IBOutlet UILabel *productTitle;
+@property (weak, nonatomic) IBOutlet UILabel *productPrice;
+@property (weak, nonatomic) IBOutlet UILabel *productCode;
+
 @end

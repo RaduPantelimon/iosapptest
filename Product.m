@@ -68,7 +68,7 @@
     [encoder encodeObject:releaseDateString forKey:@"releaseDate"];
     [encoder encodeObject:imageUrl forKey:@"imageUrl"];
     [encoder encodeObject:productName forKey:@"productName"];
-    [encoder encodeObject:productName forKey:@"productName"];
+    [encoder encodeObject:productDescription forKey:@"description"];
     [encoder encodeFloat:price forKey:@"price"];
     [encoder encodeFloat:starRating forKey:@"starRating"];
     [encoder encodeObject:image forKey:@"image"];

@@ -26,6 +26,15 @@
         UIImage * image = [UIImage imageNamed:@"Selected"];
         [self.favoriteButton setImage:image forState:UIControlStateNormal];
     }
+    
+    
+    self.ProductImage.image = [UIImage imageWithData: self.selectedProduct.image];
+    
+    self.productPrice.text = [NSString stringWithFormat:@"%@ %.02f %@", @"Price: ", self.selectedProduct.price,@" $"];
+    self.productCode.text = [NSString stringWithFormat:@"%@ %@", @"Price: ", self.selectedProduct.productCode];
+    self.productDescription.text = self.selectedProduct.productDescription;
+    self.productTitle.text = self.selectedProduct.productName;
+
     NSLog(@"View launched");
 }
 

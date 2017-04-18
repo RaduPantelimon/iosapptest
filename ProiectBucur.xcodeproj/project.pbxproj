@@ -11,6 +11,8 @@
 		1E1BFE901EA5349300AE05DA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE8F1EA5349300AE05DA /* CustomCell.m */; };
 		1E1BFE931EA5462800AE05DA /* SecondaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE921EA5462800AE05DA /* SecondaryViewController.m */; };
 		1E1BFE961EA5E84B00AE05DA /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE951EA5E84B00AE05DA /* UserProfile.m */; };
+		1E1BFE991EA6A55B00AE05DA /* FavoritesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE981EA6A55B00AE05DA /* FavoritesController.m */; };
+		1E1BFE9C1EA6A9B000AE05DA /* FavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE9B1EA6A9B000AE05DA /* FavoritesCell.m */; };
 		1E66B2011EA4C01B004E693F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2001EA4C01B004E693F /* main.m */; };
 		1E66B2041EA4C01B004E693F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2031EA4C01B004E693F /* AppDelegate.m */; };
 		1E66B2071EA4C01B004E693F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2061EA4C01B004E693F /* ViewController.m */; };
@@ -33,6 +35,10 @@
 		1E1BFE921EA5462800AE05DA /* SecondaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryViewController.m; sourceTree = "<group>"; };
 		1E1BFE941EA5E84B00AE05DA /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		1E1BFE951EA5E84B00AE05DA /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		1E1BFE971EA6A55B00AE05DA /* FavoritesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesController.h; sourceTree = "<group>"; };
+		1E1BFE981EA6A55B00AE05DA /* FavoritesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesController.m; sourceTree = "<group>"; };
+		1E1BFE9A1EA6A9B000AE05DA /* FavoritesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesCell.h; sourceTree = "<group>"; };
+		1E1BFE9B1EA6A9B000AE05DA /* FavoritesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesCell.m; sourceTree = "<group>"; };
 		1E66B1FC1EA4C01B004E693F /* ProiectBucur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProiectBucur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E66B2001EA4C01B004E693F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E66B2021EA4C01B004E693F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +77,10 @@
 		1E66B1F31EA4C01B004E693F = {
 			isa = PBXGroup;
 			children = (
+				1E1BFE9A1EA6A9B000AE05DA /* FavoritesCell.h */,
+				1E1BFE9B1EA6A9B000AE05DA /* FavoritesCell.m */,
+				1E1BFE971EA6A55B00AE05DA /* FavoritesController.h */,
+				1E1BFE981EA6A55B00AE05DA /* FavoritesController.m */,
 				1E1BFE941EA5E84B00AE05DA /* UserProfile.h */,
 				1E1BFE951EA5E84B00AE05DA /* UserProfile.m */,
 				1E1BFE911EA5462800AE05DA /* SecondaryViewController.h */,
@@ -261,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1BFE9C1EA6A9B000AE05DA /* FavoritesCell.m in Sources */,
 				1E66B2071EA4C01B004E693F /* ViewController.m in Sources */,
 				1E1BFE931EA5462800AE05DA /* SecondaryViewController.m in Sources */,
 				1E1BFE881EA4FFF600AE05DA /* Product.m in Sources */,
@@ -268,6 +279,7 @@
 				1E1BFE961EA5E84B00AE05DA /* UserProfile.m in Sources */,
 				1E66B2041EA4C01B004E693F /* AppDelegate.m in Sources */,
 				1E66B2011EA4C01B004E693F /* main.m in Sources */,
+				1E1BFE991EA6A55B00AE05DA /* FavoritesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

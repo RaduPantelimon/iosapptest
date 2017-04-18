@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  FavoritesController.h
 //  ProiectBucur
 //
-//  Created by Radu Bucur on 17/04/2017.
+//  Created by Radu Bucur on 18/04/2017.
 //  Copyright © 2017 Radu Bucur. All rights reserved.
 //
 
@@ -12,11 +12,12 @@
 
 @protocol toDetailsProtocol;
 
-@interface ViewController : UIViewController <toDetailsProtocol>
+@interface FavoritesController : UIViewController <toDetailsProtocol>
 
--(void)getProducts;
--(int) findFavorite: (int) productId;
--(void) unarchiveProfile;
+
+
+-(void) prepareForTableReload;
+
 @property NSMutableArray *productArray;
 @property int ItemSelected;
 @property UserProfile * profile;
@@ -24,4 +25,3 @@
 @property NSString * userToken;
 
 @end
-

@@ -65,6 +65,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self unarchiveProfile];
+    
     if(self.tableInitialized == true)
     {
         //setting pictures
@@ -341,7 +343,19 @@
     return foundAt;
 }
 
+-(void) unarchiveProfile{
+    
+    NSUserDefaults * currentDefualts = [NSUserDefaults standardUserDefaults];
+    NSData *dataRepresentingSavedUser = [currentDefualts objectForKey: self.userToken];
+    if(dataRepresentingSavedUser != nil)
+    {
+        self.profile = [NSKeyedUnarchiver unarchiveObjectWithData: dataRepresentingSavedUser];
+    }
+    else{
+        self.profile = [[UserProfile alloc ] initWithProps:self.userToken UserID:self.userToken];
+    }
 
+}
 
 @end;
 
