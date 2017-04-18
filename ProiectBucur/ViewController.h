@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "UserProfile.h"
+#import "SecondaryViewController.h"
 
-@interface ViewController : UIViewController
+@protocol toDetailsProtocol;
+
+@interface ViewController : UIViewController <toDetailsProtocol>
 
 -(void)getProducts;
+-(int) findFavorite: (int) productId;
 
 @property NSMutableArray *productArray;
 @property int ItemSelected;
 @property UserProfile * profile;
-
+@property bool tableInitialized;
 @property NSString * userToken;
 
 @end

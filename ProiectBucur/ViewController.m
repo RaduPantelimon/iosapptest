@@ -63,6 +63,35 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(self.tableInitialized == true)
+    {
+        //setting pictures
+        for(int i=0; i< self.productArray.count;i++)
+        {
+            NSIndexPath * indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+            CustomCell * customCell = [self.table cellForRowAtIndexPath:indexpath];
+            
+            Product * currentProduct = self.productArray[i];
+            
+            int prdID = [currentProduct productId];
+            int foundAt = [self findFavorite: prdID ];
+            
+            if(foundAt != -1)
+            {
+                UIImage * image = [UIImage imageNamed:@"Selected"];
+                [customCell.customFavoritesButton setImage:image forState:UIControlStateNormal];
+            }else{
+                UIImage * image = [UIImage imageNamed:@"Deselected"];
+                [customCell.customFavoritesButton setImage:image forState:UIControlStateNormal];
+            }
+            
+        }
+        
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -92,6 +121,8 @@
             Product * product =[[Product alloc] initWithProps:productsArray[i]];
             [self.productArray addObject: product];
         }
+        
+        self.tableInitialized = true;
         [self.table reloadData];
         
         
@@ -130,6 +161,7 @@
     //adding pictures to the cell
     NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
     NSData *data = [NSData dataWithContentsOfURL:imgURL];
+    currentProduct.image = data;
     customCell.customPicture.image = [UIImage imageWithData: data];
     
     customCell.customPicture.layer.cornerRadius = customCell.customPicture.frame.size.width/2;
@@ -141,6 +173,23 @@
     
     [customCell.customDetailsButton addTarget:self action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];
     [customCell.customFavoritesButton addTarget:self action:@selector(SetFavorites:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //finding if the current cell is favorited or not
+    bool foundItem = false;
+    
+    for(int i=0;i<self.profile.favorites.count;i++)
+    {
+        if([self.profile.favorites[i] productId] == [currentProduct productId])
+        {
+            foundItem = true;
+        }
+    }
+    
+    if(foundItem)
+    {
+        UIImage * image = [UIImage imageNamed:@"Selected"];
+        [customCell.customFavoritesButton setImage:image forState:UIControlStateNormal];
+    }
     
     /*[customCell.customDetailsButton addTarget:currentProduct action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];*/
     return customCell;
@@ -173,13 +222,20 @@
         }
     }
     
+    UIButton * buttonSender = (UIButton *)sender;
     if(foundAt != -1)
     {
         [self.profile.favorites removeObjectAtIndex:foundAt];
+        UIImage * image = [UIImage imageNamed:@"Deselected"];
+        [buttonSender setImage:image forState:UIControlStateNormal];
+        
     }
-    else{
+    else
+    {
         
         [self.profile.favorites addObject:currentProduct];
+        UIImage * image = [UIImage imageNamed:@"Selected"];
+        [buttonSender setImage:image forState:UIControlStateNormal];
         
     }
     
@@ -200,21 +256,94 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    Product * selectedProduct = [self.productArray objectAtIndex:self.ItemSelected];
+
+    int foundAt = -1;
+    
+    for(int i=0; i< self.profile.favorites.count;i++)
+    {
+        if([self.profile.favorites[i] productId] == [selectedProduct productId])
+        {
+            foundAt = i;
+        }
+    }
+
     
     SecondaryViewController *destination=segue.destinationViewController;
-    destination.selectedProduct = [self.productArray objectAtIndex:self.ItemSelected];
+    destination.selectedProduct = selectedProduct;
+    destination.delegate = self;
+    
+    if(foundAt != -1)
+    {
+        destination.isFavorite = true;
+        
+    }else{
+        
+        destination.isFavorite = false;
+    }
+    
 }
 
 
+#pragma mark - Protocol Arguments
+
+-(void) changeFavorite: (int) productId{
+    
+    int foundAt = -1;
+    
+    for(int i=0; i< self.profile.favorites.count;i++)
+    {
+        if([self.profile.favorites[i] productId] == productId)
+        {
+            foundAt = i;
+        }
+    }
+    
+    if(foundAt != -1)
+    {
+        [self.profile.favorites removeObjectAtIndex:foundAt];
+        
+    }
+    else
+    {
+        Product * currentpj;
+        for(int i=0; i< self.productArray.count;i++)
+        {
+            if([self.productArray[i] productId] == productId)
+            {
+                currentpj = self.productArray[i];
+            }
+        }
+        [self.profile.favorites addObject:currentpj];
+    }
+
+    //archiving the new profile and displaying it
+    NSData *archivedProfile = [NSKeyedArchiver archivedDataWithRootObject:self.profile];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedProfile forKey:self.userToken];
+    
+    NSLog(@"%d",productId);
+}
+
+
+
+
+
+-(int) findFavorite: (int) productId{
+    int foundAt = -1;
+    
+    for(int i=0; i< self.profile.favorites.count;i++)
+    {
+        if([self.profile.favorites[i] productId] == productId)
+        {
+            foundAt = i;
+        }
+    }
+    return foundAt;
+}
+
+
+
 @end;
-
-
-
-
-
-
-
-
 
 
 

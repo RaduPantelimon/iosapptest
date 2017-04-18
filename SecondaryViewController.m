@@ -7,12 +7,27 @@
 //
 
 #import "SecondaryViewController.h"
+#import "ViewController.h"
 
 @interface SecondaryViewController ()
 
 @end
 
 @implementation SecondaryViewController
+
+
+@synthesize delegate;
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(self.isFavorite == true)
+    {
+        UIImage * image = [UIImage imageNamed:@"Selected"];
+        [self.favoriteButton setImage:image forState:UIControlStateNormal];
+    }
+    NSLog(@"View launched");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +37,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)FavoriteClick:(id)sender {
+    
+    [[self delegate] changeFavorite:self.selectedProduct.productId];
+    if(self.isFavorite)
+    {
+        UIImage * image = [UIImage imageNamed:@"Deselected"];
+        [self.favoriteButton setImage:image forState:UIControlStateNormal];
+    }
+    else{
+        UIImage * image = [UIImage imageNamed:@"Selected"];
+        [self.favoriteButton setImage:image forState:UIControlStateNormal];
+    }
+    self.isFavorite = !self.isFavorite;
 }
 
 /*

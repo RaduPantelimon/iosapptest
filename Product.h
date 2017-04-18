@@ -18,6 +18,7 @@
     float price;
     float starRating;
     NSString * imageUrl;
+    NSData * image;
 }
 
 
@@ -29,7 +30,7 @@
 @property float price;
 @property float starRating;
 @property NSString * imageUrl;
-
+@property NSData * image;
 
 -(id)initWithProps:(NSDictionary *)productDictionary;
 

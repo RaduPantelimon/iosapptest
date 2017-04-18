@@ -20,7 +20,7 @@
 @synthesize  price;
 @synthesize starRating;
 @synthesize imageUrl;
-
+@synthesize image;
 
 -(id)initWithProps:(NSDictionary *)productDictionary
 {
@@ -34,7 +34,6 @@
         self.starRating =[ (NSString *)[productDictionary valueForKey:@"starRating"] doubleValue];
         self.imageUrl = (NSString *)[productDictionary valueForKey:@"imageUrl"];
         self.productDescription = (NSString *)[productDictionary valueForKey:@"description"];
-        
     }
     
     return self;
@@ -52,6 +51,7 @@
         self.starRating =[decoder decodeFloatForKey:@"starRating"];
         self.imageUrl = [decoder decodeObjectForKey:@"imageUrl"];
         self.productDescription = [decoder decodeObjectForKey:@"description"];
+        self.image = [decoder decodeObjectForKey:@"image"];
         
     }
     return self;
@@ -71,20 +71,8 @@
     [encoder encodeObject:productName forKey:@"productName"];
     [encoder encodeFloat:price forKey:@"price"];
     [encoder encodeFloat:starRating forKey:@"starRating"];
-    
+    [encoder encodeObject:image forKey:@"image"];
 }
 
 
 @end
-
-
-/*
- @property int productId;
- @property NSString * productName;
- @property NSString * productCode;
- @property NSString * releaseDateString;
- @property NSDate * releaseDate;
- @property float price;
- @property float starRating;
- @property NSString * imageUrl;
- */
