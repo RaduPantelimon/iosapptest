@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *customPicture;
 @property (weak, nonatomic) IBOutlet UIButton *customDetailsButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *customFavoritesButton;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserProfile.h"
 
 @interface ViewController : UIViewController
 
@@ -14,6 +15,9 @@
 
 @property NSMutableArray *productArray;
 @property int ItemSelected;
+@property UserProfile * profile;
+
+@property NSString * userToken;
 
 @end
 

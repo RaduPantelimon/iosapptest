@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Product : NSObject
+@interface Product : NSObject <NSCoding>{
+    
+    int productId;
+    NSString * productName;
+    NSString * productCode;
+    NSString * releaseDateString;
+    NSString * productDescription;
+    float price;
+    float starRating;
+    NSString * imageUrl;
+}
 
 
 @property int productId;
@@ -16,10 +26,10 @@
 @property NSString * productCode;
 @property NSString * releaseDateString;
 @property NSString * productDescription;
-@property NSDate * releaseDate;
 @property float price;
 @property float starRating;
 @property NSString * imageUrl;
+
 
 -(id)initWithProps:(NSDictionary *)productDictionary;
 

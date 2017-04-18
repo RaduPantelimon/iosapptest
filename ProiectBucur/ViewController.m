@@ -40,9 +40,26 @@
     [self.view addSubview:loginButton];
     self.productArray = [[NSMutableArray alloc] init];
     if ([FBSDKAccessToken currentAccessToken]) {
+        
+        
         // User is logged in, do work such as go to next view controller.
         NSLog(@"user logat");
         [self getProducts];
+        NSString * userid = [[FBSDKAccessToken currentAccessToken] userID];
+        self.userToken = userid;
+        
+        
+        NSUserDefaults * currentDefualts = [NSUserDefaults standardUserDefaults];
+        NSData *dataRepresentingSavedUser = [currentDefualts objectForKey: userid];
+        if(dataRepresentingSavedUser != nil)
+        {
+            self.profile = [NSKeyedUnarchiver unarchiveObjectWithData: dataRepresentingSavedUser];
+        }
+        else{
+            self.profile = [[UserProfile alloc ] initWithProps:userid UserID:userid];
+        }
+        
+        
     }
 }
 
@@ -87,6 +104,7 @@
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
         [alertView show];
+        
     }];
     
     // 5
@@ -115,13 +133,15 @@
     customCell.customPicture.image = [UIImage imageWithData: data];
     
     customCell.customPicture.layer.cornerRadius = customCell.customPicture.frame.size.width/2;
-    customCell.customPicture.layer.borderWidth = 1.0f;
+    customCell.customPicture.layer.borderWidth = 3.0f;
     customCell.customPicture.layer.borderColor = [UIColor blueColor].CGColor;
     customCell.customPicture.clipsToBounds = YES;
     
     customCell.customDetailsButton.tag = indexPath.row;
     
     [customCell.customDetailsButton addTarget:self action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];
+    [customCell.customFavoritesButton addTarget:self action:@selector(SetFavorites:) forControlEvents:UIControlEventTouchUpInside];
+    
     /*[customCell.customDetailsButton addTarget:currentProduct action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];*/
     return customCell;
     
@@ -137,6 +157,40 @@
     self.ItemSelected = (int) indexpath.row;
     [self performSegueWithIdentifier:@"details" sender:@"detailsButton"];
 }
+
+- (IBAction)SetFavorites:(id)sender {
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView: self.table];
+    NSIndexPath * indexpath = [self.table indexPathForRowAtPoint:buttonPosition];
+    Product *currentProduct = [self.productArray objectAtIndex:indexpath.row];
+    int foundAt = -1;
+    
+    for(int i=0; i< self.profile.favorites.count;i++)
+    {
+        if([self.profile.favorites[i] productId] == [currentProduct productId])
+        {
+            foundAt = i;
+        }
+    }
+    
+    if(foundAt != -1)
+    {
+        [self.profile.favorites removeObjectAtIndex:foundAt];
+    }
+    else{
+        
+        [self.profile.favorites addObject:currentProduct];
+        
+    }
+    
+    //archiving the new profile and displaying it
+    NSData *archivedProfile = [NSKeyedArchiver archivedDataWithRootObject:self.profile];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedProfile forKey:self.userToken];
+    
+    
+    
+}
+
 
 
 #pragma mark - Navigation
