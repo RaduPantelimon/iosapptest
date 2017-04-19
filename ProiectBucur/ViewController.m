@@ -93,8 +93,21 @@
             
         }
         
+        
+        
     }
     
+    if(self.profile.theme != nil)
+    {
+        [self.profile.theme setTheme:self.view navigationBar:self.navBar tabBar:self.tabBar];
+        
+        self.table.backgroundView = nil;
+        
+        UIColor * bckgCol = [self.profile.theme colorWithHexString:self.profile.theme.tabbarColorhex ];
+        self.table.backgroundColor =bckgCol;
+
+    }
+    [self.table reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,6 +195,13 @@
 
     }
 
+    if(self.profile.theme != nil)
+    {
+        [self.profile.theme setTheme:self.view navigationBar:self.navBar tabBar:self.tabBar];
+        
+        UIColor * bckgCol = [self.profile.theme colorWithHexString:self.profile.theme.tabbarColorhex ];
+        customCell.backgroundColor =bckgCol;
+    }
     
     customCell.customPicture.layer.cornerRadius = customCell.customPicture.frame.size.width/2;
     customCell.customPicture.layer.borderWidth = 3.0f;
@@ -320,6 +340,7 @@
     
     SecondaryViewController *destination=segue.destinationViewController;
     destination.selectedProduct = selectedProduct;
+    destination.userToken = self.userToken;
     destination.delegate = self;
     
     if(foundAt != -1)

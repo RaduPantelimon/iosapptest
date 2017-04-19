@@ -35,4 +35,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *productPrice;
 @property (weak, nonatomic) IBOutlet UILabel *productCode;
 
+@property (strong, nonatomic) IBOutlet UIView *navBar;
+@property (strong, nonatomic) IBOutlet UIView *tabBar;
+
+@property NSString * userToken;
+
 @end

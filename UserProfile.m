@@ -15,6 +15,9 @@
 @synthesize Name;
 @synthesize favorites;
 @synthesize image;
+@synthesize Username;
+@synthesize theme;
+
 
 -(id)initWithProps:(NSString *)AName
             UserID:(NSString *)AUserID{
@@ -38,9 +41,10 @@
         self.favorites = [[decoder decodeObjectForKey:@"favorites"] mutableCopy];
         self.image = [[decoder decodeObjectForKey:@"profilePicture"] mutableCopy];
         self.Username = [decoder decodeObjectForKey:@"Username"];
+        self.theme = [decoder decodeObjectForKey:@"ColorTheme"];
         
     }
-    return self;
+     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -50,6 +54,7 @@
     [encoder encodeObject:favorites forKey:@"favorites"];
     [encoder encodeObject:image forKey:@"profilePicture"];
     [encoder encodeObject:Username forKey:@"Username"];
+    [encoder encodeObject:theme forKey:@"ColorTheme"];
     
 }
 

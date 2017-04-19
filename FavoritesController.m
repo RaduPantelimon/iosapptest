@@ -45,6 +45,16 @@
         [self.table reloadData];
     }
     
+    if(self.profile.theme != nil)
+    {
+        [self.profile.theme setTheme:self.view navigationBar:self.navBar tabBar:self.tabBar];
+        
+        self.table.backgroundView = nil;
+        
+        UIColor * bckgCol = [self.profile.theme colorWithHexString:self.profile.theme.tabbarColorhex ];
+        self.table.backgroundColor =bckgCol;
+    }
+    
 }
 
 
@@ -72,6 +82,14 @@
     favoritesCell.customName.text = currentProduct.productName;
     favoritesCell.customPrice.text = [NSString stringWithFormat:@"%@%@",[NSString stringWithFormat:@"%.02f", currentProduct.price],@" $"];
     
+    
+    if(self.profile.theme != nil)
+    {
+        [self.profile.theme setTheme:self.view navigationBar:self.navBar tabBar:self.tabBar];
+        
+        UIColor * bckgCol = [self.profile.theme colorWithHexString:self.profile.theme.tabbarColorhex ];
+        favoritesCell.backgroundColor =bckgCol;
+    }
     //adding pictures to the cell
     //NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
     //NSData *data = [NSData dataWithContentsOfURL:imgURL];
@@ -141,7 +159,7 @@
     SecondaryViewController *destination=segue.destinationViewController;
     destination.selectedProduct = selectedProduct;
     destination.delegate = self;
-
+    destination.userToken = self.userToken;
     destination.isFavorite = true;
 }
 

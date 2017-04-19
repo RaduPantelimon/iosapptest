@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UserProfile.h"
+#import "ColorTheme.h"
 
 @interface ProfileController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     UIImagePickerController *picker;
@@ -18,6 +19,8 @@
 
 -(void) initialization;
 
+-(void) initializeTheme: (ColorTheme *)theme;
+
 @property UserProfile * profile;
 @property NSString * userToken;
 
@@ -25,6 +28,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ProfilePicture;
 
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *ThemeSelector;
+
+@property (weak, nonatomic) IBOutlet UINavigationItem *NavigationBar;
+
+@property (strong, nonatomic) IBOutlet UIView *TabBar;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *ThemeSegmentControl;
+
 
 
 -(IBAction)TakePhoto:(id)sender;

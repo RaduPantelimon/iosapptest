@@ -8,6 +8,7 @@
 
 #import "SecondaryViewController.h"
 #import "ViewController.h"
+#import "UserProfile.h"
 
 @interface SecondaryViewController ()
 
@@ -35,6 +36,23 @@
     self.productDescription.text = self.selectedProduct.productDescription;
     self.productTitle.text = self.selectedProduct.productName;
 
+    NSUserDefaults * currentDefualts = [NSUserDefaults standardUserDefaults];
+    NSData *dataRepresentingSavedUser = [currentDefualts objectForKey: self.userToken];
+    UserProfile * profile;
+    if(dataRepresentingSavedUser != nil)
+    {
+        profile = [NSKeyedUnarchiver unarchiveObjectWithData: dataRepresentingSavedUser];
+    }
+    else{
+        profile = [[UserProfile alloc ] initWithProps:@"" UserID:@""];
+    }
+    
+    if(profile.theme != nil)
+    {
+        [profile.theme setThemeDetails:self.view navigationBar:self.navBar tabBar:self.tabBar];
+    }
+    
+    
     NSLog(@"View launched");
 }
 
@@ -60,6 +78,7 @@
         [self.favoriteButton setImage:image forState:UIControlStateNormal];
     }
     self.isFavorite = !self.isFavorite;
+    
 }
 
 /*

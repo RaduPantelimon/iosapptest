@@ -23,5 +23,7 @@
 @property UserProfile * profile;
 @property bool tableInitialized;
 @property NSString * userToken;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+@property (strong, nonatomic) IBOutlet UIView *tabBar;
 
 @end

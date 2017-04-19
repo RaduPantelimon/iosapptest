@@ -10,6 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Product.h"
+#import "ColorTheme.h"
 
 @interface ProfileController ()
 
@@ -139,9 +140,52 @@
         {
             self.ProfilePicture.image = [UIImage imageWithData: self.profile.image];
         }
+        if(self.profile.theme != nil)
+        {
+            [self.profile.theme setTheme:self.view navigationBar:self.NavigationBar tabBar:self.TabBar];
+            
+            if([self.profile.theme.backgroundColorhex  isEqual: @"FFFFFF"])
+            {
+                [self.ThemeSelector setSelectedSegmentIndex:0];
+            }
+            else{
+                [self.ThemeSelector setSelectedSegmentIndex:1];
+            }
+            
+        }
         
 
     }
+}
+
+- (IBAction)ChangeTheme:(id)sender {
+    
+    NSInteger selectedIndex = [self.ThemeSelector selectedSegmentIndex];
+    if(selectedIndex == 0)
+    {
+         ColorTheme * newTheme = [[ColorTheme alloc] initWithProps:@"EEEEEE" tabbarColor: @"DDDDDD" backgroundColorhex:@"FFFFFF" textColorhex:@"222222"];
+        
+        self.profile.theme = newTheme;
+    }
+    else{
+        ColorTheme * newTheme = [[ColorTheme alloc] initWithProps:@"222222" tabbarColor: @"555555" backgroundColorhex:@"AAAAAA" textColorhex:@"222222"];
+        
+        
+        self.profile.theme = newTheme;
+    }
+    
+    [self.profile.theme setTheme:self.view navigationBar:self.NavigationBar tabBar:self.TabBar];
+    
+    //archiving the new profile and displaying it
+    NSData *archivedProfile = [NSKeyedArchiver archivedDataWithRootObject:self.profile];
+    [[NSUserDefaults standardUserDefaults] setObject:archivedProfile forKey:self.userToken];
+    
+    
+}
+
+
+-(void) initializeTheme: (ColorTheme *)theme{
+    
 }
 
 

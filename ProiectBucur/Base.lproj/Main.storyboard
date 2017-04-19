@@ -123,7 +123,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="g6t-Wr-pvO"/>
                     <connections>
+                        <outlet property="navBar" destination="g6t-Wr-pvO" id="QWh-Ka-ORv"/>
                         <outlet property="searchBar" destination="oKY-DT-0px" id="knd-Ft-Fez"/>
+                        <outlet property="tabBar" destination="8bC-Xf-vdC" id="Trc-E2-NYB"/>
                         <outlet property="table" destination="EVJ-HW-sQF" id="PeQ-Vs-7X4"/>
                         <segue destination="1fG-FK-WeD" kind="show" identifier="details" id="QsK-PW-18s"/>
                     </connections>
@@ -228,6 +230,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="qWT-vh-nUI"/>
                     <connections>
+                        <outlet property="navBar" destination="qWT-vh-nUI" id="0CU-aK-A4r"/>
+                        <outlet property="tabBar" destination="K2V-Z4-JKB" id="fPb-y0-DLD"/>
                         <outlet property="table" destination="gMX-a1-Unm" id="h4G-Q0-yil"/>
                         <segue destination="1fG-FK-WeD" kind="show" identifier="details" id="43y-gw-PDr"/>
                     </connections>
@@ -353,10 +357,12 @@
                     <connections>
                         <outlet property="ProductImage" destination="tcK-Jb-2eh" id="Qgp-OH-lBZ"/>
                         <outlet property="favoriteButton" destination="bT6-9d-dd0" id="W6V-OO-Iw3"/>
+                        <outlet property="navBar" destination="GkI-Hz-BYh" id="AGp-fq-fuD"/>
                         <outlet property="productCode" destination="lTw-Mj-xO0" id="h8J-DP-58G"/>
                         <outlet property="productDescription" destination="UMo-8f-UYv" id="CQL-QQ-KG5"/>
                         <outlet property="productPrice" destination="kBc-7I-zjK" id="TcT-ff-s7Q"/>
                         <outlet property="productTitle" destination="swp-HK-9Tk" id="cNW-kN-5ww"/>
+                        <outlet property="tabBar" destination="GkI-Hz-BYh" id="ml7-l9-8ca"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vx6-FF-wvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,11 +484,36 @@
                                     <action selector="ChooseExisting:" destination="3Lp-XS-M79" eventType="touchUpInside" id="2B0-TC-wmX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrj-rD-3gN">
+                                <rect key="frame" x="26" y="287" width="70" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="ePv-GD-0nI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jr0-uH-K0L">
+                                <rect key="frame" x="106" y="283.5" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="zpT-8e-vox"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Light"/>
+                                    <segment title="Dark"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ChangeTheme:" destination="3Lp-XS-M79" eventType="valueChanged" id="H66-uH-b3m"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="AZa-eg-D09" firstAttribute="top" secondItem="die-r0-vds" secondAttribute="bottom" constant="10" id="4DZ-SU-TJL"/>
+                            <constraint firstItem="Jr0-uH-K0L" firstAttribute="centerY" secondItem="vrj-rD-3gN" secondAttribute="centerY" id="APF-r0-Ntp"/>
+                            <constraint firstItem="Jr0-uH-K0L" firstAttribute="leading" secondItem="vrj-rD-3gN" secondAttribute="trailing" constant="10" id="CmP-mt-Kbo"/>
                             <constraint firstAttribute="trailing" secondItem="die-r0-vds" secondAttribute="trailing" constant="15" id="Ktk-5C-DG9"/>
+                            <constraint firstItem="vrj-rD-3gN" firstAttribute="top" secondItem="AZa-eg-D09" secondAttribute="bottom" constant="15" id="S4K-NR-tvl"/>
                             <constraint firstItem="tOu-Bo-SIG" firstAttribute="leading" secondItem="ejQ-Yu-FAY" secondAttribute="leading" constant="10" id="Tre-QB-mcT"/>
                             <constraint firstItem="YVc-eb-zAb" firstAttribute="centerY" secondItem="xw9-be-xmQ" secondAttribute="centerY" id="W46-Kh-lGv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ihM-nO-zKn" secondAttribute="trailing" constant="10" id="XlG-Qe-n3G"/>
@@ -490,6 +521,7 @@
                             <constraint firstItem="AZa-eg-D09" firstAttribute="leading" secondItem="ejQ-Yu-FAY" secondAttribute="leading" constant="15" id="dff-rF-weJ"/>
                             <constraint firstItem="ihM-nO-zKn" firstAttribute="top" secondItem="930-ql-DE8" secondAttribute="bottom" constant="15" id="gmE-xb-qCE"/>
                             <constraint firstItem="ihM-nO-zKn" firstAttribute="leading" secondItem="tOu-Bo-SIG" secondAttribute="trailing" constant="10" id="nM6-C4-XA0"/>
+                            <constraint firstItem="vrj-rD-3gN" firstAttribute="leading" secondItem="ejQ-Yu-FAY" secondAttribute="leadingMargin" constant="10" id="qAK-RW-plC"/>
                             <constraint firstItem="tOu-Bo-SIG" firstAttribute="top" secondItem="930-ql-DE8" secondAttribute="bottom" constant="10" id="rIE-Kn-yh5"/>
                             <constraint firstItem="YVc-eb-zAb" firstAttribute="leading" secondItem="xw9-be-xmQ" secondAttribute="trailing" constant="10" id="rw4-Eo-8Fj"/>
                             <constraint firstItem="xw9-be-xmQ" firstAttribute="leading" secondItem="tOu-Bo-SIG" secondAttribute="trailing" constant="10" id="sya-6T-HW5"/>
@@ -500,7 +532,11 @@
                     <navigationItem key="navigationItem" id="NHx-xb-kza"/>
                     <connections>
                         <outlet property="NameLabel" destination="ihM-nO-zKn" id="tr5-6B-wbX"/>
+                        <outlet property="NavigationBar" destination="NHx-xb-kza" id="lyR-ao-X67"/>
                         <outlet property="ProfilePicture" destination="tOu-Bo-SIG" id="DRs-fd-CSW"/>
+                        <outlet property="TabBar" destination="ejQ-Yu-FAY" id="nao-yp-uKu"/>
+                        <outlet property="ThemeSegmentControl" destination="Jr0-uH-K0L" id="B0c-hn-rHr"/>
+                        <outlet property="ThemeSelector" destination="Jr0-uH-K0L" id="C7c-Rv-Cb5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrA-2w-tcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
