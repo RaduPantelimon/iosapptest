@@ -14,11 +14,15 @@
     NSMutableArray *favorites;
     NSString * Name;
     NSString * UserID;
+    NSData * image;
+    NSString * Username;
 }
 
 @property NSMutableArray *favorites;
 @property NSString * Name;
 @property NSString * UserID;
+@property NSData * image;
+@property NSString * Username;
 
 -(id)initWithProps:(NSString *)Name
             UserID:(NSString *)UserID;

@@ -11,6 +11,7 @@
 @interface FavoritesCell : UITableViewCell
 
 
+
 @property (weak, nonatomic) IBOutlet UILabel *customName;
 
 @property (weak, nonatomic) IBOutlet UILabel *customPrice;

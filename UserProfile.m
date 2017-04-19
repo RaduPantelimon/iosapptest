@@ -14,7 +14,7 @@
 @synthesize UserID;
 @synthesize Name;
 @synthesize favorites;
-
+@synthesize image;
 
 -(id)initWithProps:(NSString *)AName
             UserID:(NSString *)AUserID{
@@ -36,6 +36,8 @@
         self.UserID = [decoder decodeObjectForKey:@"UserID"];
         self.Name = [decoder decodeObjectForKey:@"Name"];
         self.favorites = [[decoder decodeObjectForKey:@"favorites"] mutableCopy];
+        self.image = [[decoder decodeObjectForKey:@"profilePicture"] mutableCopy];
+        self.Username = [decoder decodeObjectForKey:@"Username"];
         
     }
     return self;
@@ -46,6 +48,8 @@
     [encoder encodeObject:UserID forKey:@"UserID"];
     [encoder encodeObject:Name forKey:@"Name"];
     [encoder encodeObject:favorites forKey:@"favorites"];
+    [encoder encodeObject:image forKey:@"profilePicture"];
+    [encoder encodeObject:Username forKey:@"Username"];
     
 }
 
