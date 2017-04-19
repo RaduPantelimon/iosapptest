@@ -91,7 +91,6 @@
                                             <outlet property="customName" destination="X81-6l-huc" id="9RV-vZ-O59"/>
                                             <outlet property="customPicture" destination="UuG-7W-BYp" id="FOR-nf-pug"/>
                                             <outlet property="customPrice" destination="uXQ-e9-hpJ" id="xXh-cf-WUG"/>
-                                            <segue destination="1fG-FK-WeD" kind="show" identifier="details" id="SgD-sb-RXE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -100,6 +99,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6uV-Pu-AyN"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKY-DT-0px">
+                                <rect key="frame" x="107" y="491" width="247" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GB0-9S-Ocy"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpj-zy-dLt">
+                                <rect key="frame" x="21" y="503" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -109,7 +123,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="g6t-Wr-pvO"/>
                     <connections>
+                        <outlet property="searchBar" destination="oKY-DT-0px" id="knd-Ft-Fez"/>
                         <outlet property="table" destination="EVJ-HW-sQF" id="PeQ-Vs-7X4"/>
+                        <segue destination="1fG-FK-WeD" kind="show" identifier="details" id="QsK-PW-18s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -410,6 +426,6 @@
         <image name="Home" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="43y-gw-PDr"/>
+        <segue reference="QsK-PW-18s"/>
     </inferredMetricsTieBreakers>
 </document>

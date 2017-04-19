@@ -18,6 +18,7 @@
 -(int) findFavorite: (int) productId;
 -(void) unarchiveProfile;
 @property NSMutableArray *productArray;
+@property NSMutableArray *displayArray;
 @property int ItemSelected;
 @property UserProfile * profile;
 @property bool tableInitialized;

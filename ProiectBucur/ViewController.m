@@ -14,10 +14,11 @@
 #import "CustomCell.h"
 #import "SecondaryViewController.h"
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -39,6 +40,7 @@
     loginButton.center = origin;
     [self.view addSubview:loginButton];
     self.productArray = [[NSMutableArray alloc] init];
+    self.displayArray = [[NSMutableArray alloc] init];
     if ([FBSDKAccessToken currentAccessToken]) {
         
         
@@ -70,12 +72,12 @@
     if(self.tableInitialized == true)
     {
         //setting pictures
-        for(int i=0; i< self.productArray.count;i++)
+        for(int i=0; i< self.displayArray.count;i++)
         {
             NSIndexPath * indexpath = [NSIndexPath indexPathForRow:i inSection:0];
             CustomCell * customCell = [self.table cellForRowAtIndexPath:indexpath];
             
-            Product * currentProduct = self.productArray[i];
+            Product * currentProduct = self.displayArray[i];
             
             int prdID = [currentProduct productId];
             int foundAt = [self findFavorite: prdID ];
@@ -121,10 +123,16 @@
         
         for (int i = 0; i < productsArray.count; i++) {
             Product * product =[[Product alloc] initWithProps:productsArray[i]];
+            //getting image
+            NSURL *imgURL = [[NSURL alloc]initWithString:product.imageUrl];
+            NSData *data = [NSData dataWithContentsOfURL:imgURL];
+            product.image = data;
+            
             [self.productArray addObject: product];
         }
         
         self.tableInitialized = true;
+        [self.displayArray addObjectsFromArray:self.productArray];
         [self.table reloadData];
         
         
@@ -146,7 +154,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.productArray.count;
+    return self.displayArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,16 +163,25 @@
     static NSString * cellId = @"cell";
     CustomCell * customCell = [tableView dequeueReusableCellWithIdentifier: cellId];
     
-    Product * currentProduct = [self.productArray objectAtIndex:indexPath.row];
+    Product * currentProduct = [self.displayArray objectAtIndex:indexPath.row];
     customCell.customCode.text = currentProduct.productCode;
     customCell.customName.text = currentProduct.productName;
     customCell.customPrice.text = [NSString stringWithFormat:@"%@%@",[NSString stringWithFormat:@"%.02f", currentProduct.price],@" $"];
     
     //adding pictures to the cell
-    NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
-    NSData *data = [NSData dataWithContentsOfURL:imgURL];
-    currentProduct.image = data;
-    customCell.customPicture.image = [UIImage imageWithData: data];
+    if(currentProduct.image != nil)
+    {
+        customCell.customPicture.image = [UIImage imageWithData: currentProduct.image];
+    }
+    else{
+        
+        NSURL *imgURL = [[NSURL alloc]initWithString:currentProduct.imageUrl];
+        NSData *data = [NSData dataWithContentsOfURL:imgURL];
+        currentProduct.image = data;
+        customCell.customPicture.image = [UIImage imageWithData: data];
+
+    }
+
     
     customCell.customPicture.layer.cornerRadius = customCell.customPicture.frame.size.width/2;
     customCell.customPicture.layer.borderWidth = 3.0f;
@@ -192,6 +209,11 @@
         UIImage * image = [UIImage imageNamed:@"Selected"];
         [customCell.customFavoritesButton setImage:image forState:UIControlStateNormal];
     }
+    else{
+        UIImage * image = [UIImage imageNamed:@"Deselected"];
+        [customCell.customFavoritesButton setImage:image forState:UIControlStateNormal];
+
+    }
     
     /*[customCell.customDetailsButton addTarget:currentProduct action:@selector(GoToSecondary:) forControlEvents:UIControlEventTouchUpInside];*/
     return customCell;
@@ -213,7 +235,7 @@
     
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView: self.table];
     NSIndexPath * indexpath = [self.table indexPathForRowAtPoint:buttonPosition];
-    Product *currentProduct = [self.productArray objectAtIndex:indexpath.row];
+    Product *currentProduct = [self.displayArray objectAtIndex:indexpath.row];
     int foundAt = -1;
     
     for(int i=0; i< self.profile.favorites.count;i++)
@@ -249,7 +271,32 @@
     
 }
 
-
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    if([searchText length] == 0)
+    {
+        [self.displayArray removeAllObjects];
+        [self.displayArray addObjectsFromArray:self.productArray];
+        
+    }
+    else{
+        [self.displayArray removeAllObjects];
+        for(int i=0; i<self.productArray.count; i++)
+        {
+            Product *p = self.productArray[i];
+            
+            NSRange name = [p.productName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            NSRange code = [p.productCode rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            
+            if(name.location != NSNotFound || code.location != NSNotFound)
+            {
+                [self.displayArray addObject:p];
+            }
+        }
+        
+    }
+    [self.table reloadData];
+}
 
 #pragma mark - Navigation
 
@@ -258,7 +305,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    Product * selectedProduct = [self.productArray objectAtIndex:self.ItemSelected];
+    Product * selectedProduct = [self.displayArray objectAtIndex:self.ItemSelected];
 
     int foundAt = -1;
     
@@ -356,6 +403,8 @@
     }
 
 }
+
+
 
 @end;
 
