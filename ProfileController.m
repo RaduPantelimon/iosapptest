@@ -12,7 +12,7 @@
 #import "Product.h"
 #import "ColorTheme.h"
 
-@interface ProfileController ()
+@interface ProfileController ()<FBSDKLoginButtonDelegate>
 
 @end
 
@@ -44,6 +44,7 @@
         }
 
     }
+  
 }
 
 -(IBAction) TakePhoto:(id)sender{
@@ -105,6 +106,7 @@
     
     // Optional: Place the button in the center of your view.
     loginButton.center = origin;
+    loginButton.delegate=self;
     [self.view addSubview:loginButton];
     
     
@@ -156,6 +158,7 @@
         
 
     }
+  
 }
 
 - (IBAction)ChangeTheme:(id)sender {
@@ -183,6 +186,15 @@
     
 }
 
+- (void)  loginButton:(FBSDKLoginButton *)loginButton
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+                error:(NSError *)error{
+    NSLog(@"USER IS LOGGED IN");
+}
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    [self performSegueWithIdentifier:@"backToHome" sender:@"loginButton"];
+
+}
 
 -(void) initializeTheme: (ColorTheme *)theme{
     

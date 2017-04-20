@@ -15,6 +15,7 @@
 		1E1BFE9C1EA6A9B000AE05DA /* FavoritesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE9B1EA6A9B000AE05DA /* FavoritesCell.m */; };
 		1E1BFE9F1EA76E5B00AE05DA /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFE9E1EA76E5B00AE05DA /* ProfileController.m */; };
 		1E1BFEA21EA7CFA800AE05DA /* ColorTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFEA11EA7CFA800AE05DA /* ColorTheme.m */; };
+		1E1BFEA51EA82A6500AE05DA /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BFEA41EA82A6500AE05DA /* LoginController.m */; };
 		1E66B2011EA4C01B004E693F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2001EA4C01B004E693F /* main.m */; };
 		1E66B2041EA4C01B004E693F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2031EA4C01B004E693F /* AppDelegate.m */; };
 		1E66B2071EA4C01B004E693F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E66B2061EA4C01B004E693F /* ViewController.m */; };
@@ -45,6 +46,8 @@
 		1E1BFE9E1EA76E5B00AE05DA /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
 		1E1BFEA01EA7CFA800AE05DA /* ColorTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorTheme.h; sourceTree = "<group>"; };
 		1E1BFEA11EA7CFA800AE05DA /* ColorTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorTheme.m; sourceTree = "<group>"; };
+		1E1BFEA31EA82A6500AE05DA /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		1E1BFEA41EA82A6500AE05DA /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		1E66B1FC1EA4C01B004E693F /* ProiectBucur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProiectBucur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E66B2001EA4C01B004E693F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E66B2021EA4C01B004E693F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		1E66B1F31EA4C01B004E693F = {
 			isa = PBXGroup;
 			children = (
+				1E1BFEA31EA82A6500AE05DA /* LoginController.h */,
+				1E1BFEA41EA82A6500AE05DA /* LoginController.m */,
 				1E1BFEA01EA7CFA800AE05DA /* ColorTheme.h */,
 				1E1BFEA11EA7CFA800AE05DA /* ColorTheme.m */,
 				1E1BFE9D1EA76E5B00AE05DA /* ProfileController.h */,
@@ -286,6 +291,7 @@
 				1E66B2071EA4C01B004E693F /* ViewController.m in Sources */,
 				1E1BFE931EA5462800AE05DA /* SecondaryViewController.m in Sources */,
 				1E1BFE881EA4FFF600AE05DA /* Product.m in Sources */,
+				1E1BFEA51EA82A6500AE05DA /* LoginController.m in Sources */,
 				1E1BFEA21EA7CFA800AE05DA /* ColorTheme.m in Sources */,
 				1E1BFE901EA5349300AE05DA /* CustomCell.m in Sources */,
 				1E1BFE961EA5E84B00AE05DA /* UserProfile.m in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pq3-4W-UHv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MHD-Vg-XvT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -388,6 +388,37 @@
             </objects>
             <point key="canvasLocation" x="1057" y="-134"/>
         </scene>
+        <!--Login Controller-->
+        <scene sceneID="oxQ-nv-ILg">
+            <objects>
+                <viewController id="MHD-Vg-XvT" customClass="LoginController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AMX-9g-IeE"/>
+                        <viewControllerLayoutGuide type="bottom" id="5hh-jV-yq4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EaS-1L-u87">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybd-aa-s6i">
+                                <rect key="frame" x="83" y="318" width="207" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue to the application"/>
+                                <connections>
+                                    <action selector="GoToApplication:" destination="MHD-Vg-XvT" eventType="touchUpInside" id="gsg-mT-u4C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="pq3-4W-UHv" kind="show" identifier="toHome" id="3eg-Fe-4DM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1x-FY-ukx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1978.4000000000001" y="517.6911544227886"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pK1-tn-mRu">
             <objects>
@@ -537,11 +568,12 @@
                         <outlet property="TabBar" destination="ejQ-Yu-FAY" id="nao-yp-uKu"/>
                         <outlet property="ThemeSegmentControl" destination="Jr0-uH-K0L" id="B0c-hn-rHr"/>
                         <outlet property="ThemeSelector" destination="Jr0-uH-K0L" id="C7c-Rv-Cb5"/>
+                        <segue destination="MHD-Vg-XvT" kind="show" identifier="backToHome" id="5WR-BQ-cJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrA-2w-tcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="1280.5097451274364"/>
+            <point key="canvasLocation" x="-489" y="1384"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ior-cS-Q8g">
@@ -560,7 +592,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4u-UV-YGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="1281"/>
+            <point key="canvasLocation" x="1057" y="1384"/>
         </scene>
     </scenes>
     <resources>
@@ -570,6 +602,6 @@
         <image name="Profile" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QsK-PW-18s"/>
+        <segue reference="43y-gw-PDr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     //initializing login button
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    /*FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     
     // setting the facebook button position
     float screenHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -38,14 +38,13 @@
     
     // Optional: Place the button in the center of your view.
     loginButton.center = origin;
-    [self.view addSubview:loginButton];
+    [self.view addSubview:loginButton];*/
     self.productArray = [[NSMutableArray alloc] init];
     self.displayArray = [[NSMutableArray alloc] init];
     if ([FBSDKAccessToken currentAccessToken]) {
         
         
         // User is logged in, do work such as go to next view controller.
-        NSLog(@"user logat");
         [self getProducts];
         NSString * userid = [[FBSDKAccessToken currentAccessToken] userID];
         self.userToken = userid;
