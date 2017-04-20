@@ -58,7 +58,9 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //MAKING SURE THAT WE MAKE THE REST OF THE APLICATION UNACESSIBLE
     [self.navigationItem setHidesBackButton:YES animated:NO];
+    
     
 }
 

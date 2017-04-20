@@ -17,12 +17,18 @@
 -(void)getProducts;
 -(int) findFavorite: (int) productId;
 -(void) unarchiveProfile;
+-(void) refreshtable;
+
 @property NSMutableArray *productArray;
 @property NSMutableArray *displayArray;
 @property int ItemSelected;
 @property UserProfile * profile;
 @property bool tableInitialized;
 @property NSString * userToken;
+
+
+@property UIRefreshControl *refreshControl;
+
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (strong, nonatomic) IBOutlet UIView *tabBar;

@@ -11,6 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Product.h"
 #import "ColorTheme.h"
+#import "LoginController.h"
 
 @interface ProfileController ()<FBSDKLoginButtonDelegate>
 
@@ -201,14 +202,22 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    //Get the new view controller using [segue destinationViewController].
+    //Pass the selected object to the new view controller.
+    if([segue.identifier  isEqual: @"backToHome"])
+    {
+        LoginController *destination=segue.destinationViewController;
+        destination.hidesBottomBarWhenPushed = YES;
+
+    }
+    
+
 }
-*/
+
 
 @end

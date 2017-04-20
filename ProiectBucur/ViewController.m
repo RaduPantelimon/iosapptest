@@ -62,8 +62,17 @@
         
         
     }
+    
+    
+    //adding the refresh control to the table
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget: self action:@selector(refreshtable) forControlEvents:UIControlEventValueChanged];
+    [self.table addSubview:self.refreshControl];
 }
-
+-(void) refreshtable{
+    [self getProducts];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [self unarchiveProfile];
@@ -132,6 +141,8 @@
         NSArray * productsArray = (NSArray*)responseObject;
         
         
+        [self.productArray removeAllObjects];
+        [self.displayArray removeAllObjects];
         
         for (int i = 0; i < productsArray.count; i++) {
             Product * product =[[Product alloc] initWithProps:productsArray[i]];
@@ -146,6 +157,12 @@
         self.tableInitialized = true;
         [self.displayArray addObjectsFromArray:self.productArray];
         [self.table reloadData];
+        
+        //removing refreshView
+        if(self.refreshControl != nil)
+        {
+            [self.refreshControl endRefreshing];
+        }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -352,6 +369,7 @@
     }
     
 }
+
 
 
 #pragma mark - Protocol Arguments
